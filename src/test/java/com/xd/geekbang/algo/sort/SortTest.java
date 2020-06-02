@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SortTest {
 
-    int[] testCases = {4,2,1,5,7,0,6,3};
+    int[] testCases = {4,2,1,5,7,0,4,6,3};
+//    int[] testCases = {2,3,1,4};
 
     void printArray(int[] nums) {
         for (int num : nums) {
@@ -44,6 +45,30 @@ class SortTest {
         Sort sort = new Sort();
         printArray(testCases);
         sort.mergeSort(testCases);
+        printArray(testCases);
+    }
+
+    @Test
+    void quickSort() {
+        Sort sort = new Sort();
+        printArray(testCases);
+        sort.quickSort(testCases);
+        printArray(testCases);
+    }
+
+    @Test
+    void bucketSort() {
+        Sort sort = new Sort();
+        printArray(testCases);
+        sort.bucketSort(testCases);
+        printArray(testCases);
+    }
+
+    @Test
+    void countingSort() {
+        Sort sort = new Sort();
+        printArray(testCases);
+        sort.countingSort(testCases);
         printArray(testCases);
     }
 }
