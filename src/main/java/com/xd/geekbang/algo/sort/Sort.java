@@ -31,16 +31,37 @@ public class Sort {
 
     public void insertionSort(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
+            /*每次要插入的值先存起来*/
             int val = nums[i];
             int j = i - 1;
+            /*i之前的数据都是已经有序的，所以从i-1开始往前遍历寻找val所在位置*/
             for (; j >= 0; j--) {
+                /*如果找到比val大的数，则从该位置开始所有元素往后挪一个位置*/
                 if (nums[j] > val) {
                     nums[j+1] = nums[j];
                 } else {
                     break;
                 }
             }
+            /*j+1就是val所在的最终位置*/
             nums[j+1] = val;
+        }
+    }
+
+    public void shellSort(int[] nums) {
+        for (int step = nums.length / 2; step > 0; step /= 2) {
+            for (int i = step; i < nums.length; i++) {
+                int val = nums[i];
+                int j = i - step;
+                for (; j >= 0; j -= step) {
+                    if (nums[j] > val) {
+                        nums[j+step] = nums[j];
+                    } else {
+                        break;
+                    }
+                }
+                nums[j+step] = val;
+            }
         }
     }
 
@@ -242,14 +263,61 @@ public class Sort {
             countArr[i] += countArr[i-1];
         }
         int[] result = new int[nums.length];
+        int index;
         for (int i = nums.length-1; i >= 0; i--) {
-            result[countArr[nums[i]]-1] = nums[i];
+            index = countArr[nums[i]]-1;
+            result[index] = nums[i];
             countArr[nums[i]]--;
         }
-        int index = 0;
+        index = 0;
         for (int res : result) {
             nums[index++] = res;
         }
+    }
+
+    public void radixSort(int[] nums) {
+        int mb = maxBit(nums);
+        int step = 10;
+        int radix = 1;
+        int[] countArr = new int[step];
+        int[] tmpArr = new int[nums.length];
+        for (int i = 0; i < mb; i++) {
+            /*每次循环时将计数数组重新置0*/
+            for (int cnt : countArr) {
+                cnt = 0;
+            }
+            /*每位排序使用计数排序*/
+            for (int num : nums) {
+                int index = num / radix % step;
+                countArr[index]++;
+            }
+            for (int j = 1; j < countArr.length; j++) {
+                countArr[j] += countArr[j-1];
+            }
+            for (int j = nums.length-1; j >=0; j--) {
+                int index = nums[j] / radix % step;
+                tmpArr[countArr[index]-1] = nums[j];
+                countArr[index]--;
+            }
+            /*将每位排序结果复制回初始数组*/
+            for (int j = 0; j < nums.length; j++) {
+                nums[j] = tmpArr[j];
+            }
+            /*下次循环对下一位进行排序*/
+            radix *= 10;
+        }
+    }
+
+    private int maxBit(int[] nums) {
+        int step = 10;
+        int[] range = getRange(nums);
+        int maxNum = range[1];
+        int mb = 1;
+        while(maxNum >= step) {
+            maxNum /= step;
+            mb++;
+        }
+        return mb;
     }
 
 }

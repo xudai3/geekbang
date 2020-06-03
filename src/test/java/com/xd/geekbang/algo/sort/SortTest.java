@@ -33,6 +33,14 @@ class SortTest {
     }
 
     @Test
+    void shellSort() {
+        Sort sort = new Sort();
+        printArray(testCases);
+        sort.shellSort(testCases);
+        printArray(testCases);
+    }
+
+    @Test
     void selectionSort() {
         Sort sort = new Sort();
         printArray(testCases);
@@ -69,6 +77,14 @@ class SortTest {
         Sort sort = new Sort();
         printArray(testCases);
         sort.countingSort(testCases);
+        printArray(testCases);
+    }
+
+    @Test
+    void radixSort() {
+        Sort sort = new Sort();
+        printArray(testCases);
+        sort.radixSort(testCases);
         printArray(testCases);
     }
 }
