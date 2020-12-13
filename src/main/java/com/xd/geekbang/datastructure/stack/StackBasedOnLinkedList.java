@@ -1,4 +1,4 @@
-package com.xd.geekbang.algo.stack;
+package com.xd.geekbang.datastructure.stack;
 
 public class StackBasedOnLinkedList<T> {
     private ListNode top;

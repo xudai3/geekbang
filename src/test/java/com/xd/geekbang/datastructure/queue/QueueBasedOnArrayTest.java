@@ -1,14 +1,12 @@
-package com.xd.geekbang.algo.queue;
+package com.xd.geekbang.datastructure.queue;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CircularQueueBasedOnArrayTest {
+class QueueBasedOnArrayTest {
 
     @Test
     void enqueue() {
-        CircularQueueBasedOnArray<String> queue = new CircularQueueBasedOnArray<>(3);
+        QueueBasedOnArray<String> queue = new QueueBasedOnArray<>(3);
         assertEquals(true, queue.enqueue("a"));
         assertEquals(true, queue.enqueue("b"));
         assertEquals(true, queue.enqueue("c"));
@@ -23,5 +21,13 @@ class CircularQueueBasedOnArrayTest {
 
     @Test
     void dequeue() {
+        QueueBasedOnArray<String> queue = new QueueBasedOnArray<>(3);
+        queue.enqueue("a");
+        queue.enqueue("b");
+        queue.enqueue("c");
+        assertEquals("a", queue.dequeue());
+        assertEquals("b", queue.dequeue());
+        assertEquals("c", queue.dequeue());
+        assertEquals(null, queue.dequeue());
     }
 }

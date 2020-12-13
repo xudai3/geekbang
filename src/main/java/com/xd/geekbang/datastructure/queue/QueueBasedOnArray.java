@@ -1,4 +1,4 @@
-package com.xd.geekbang.algo.queue;
+package com.xd.geekbang.datastructure.queue;
 
 import java.util.ArrayList;
 

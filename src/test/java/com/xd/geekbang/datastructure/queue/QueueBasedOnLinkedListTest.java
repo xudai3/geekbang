@@ -1,8 +1,6 @@
-package com.xd.geekbang.algo.queue;
+package com.xd.geekbang.datastructure.queue;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class QueueBasedOnLinkedListTest {
 

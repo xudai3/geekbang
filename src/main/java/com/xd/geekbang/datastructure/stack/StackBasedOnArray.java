@@ -1,4 +1,4 @@
-package com.xd.geekbang.algo.stack;
+package com.xd.geekbang.datastructure.stack;
 
 import java.util.ArrayList;
 

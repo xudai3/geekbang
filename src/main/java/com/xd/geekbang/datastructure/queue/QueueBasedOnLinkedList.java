@@ -1,6 +1,4 @@
-package com.xd.geekbang.algo.queue;
-
-import java.util.List;
+package com.xd.geekbang.datastructure.queue;
 
 public class QueueBasedOnLinkedList<T> {
     private ListNode head;

@@ -1,6 +1,4 @@
-package com.xd.geekbang.algo.queue;
-
-import java.util.ArrayList;
+package com.xd.geekbang.datastructure.queue;
 
 public class CircularQueueBasedOnArray<T> {
     private T[] data;
